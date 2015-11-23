@@ -1,0 +1,28 @@
+doctype html
+html
+  head
+    meta( charset='utf-8' )
+    meta( http-equiv='X-UA-Compatible', content='IE=edge,chrome=1' )
+    link( type='text/css', rel='stylesheet', href='//fast.fonts.net/cssapi/f7f47a40-b25b-44ee-9f9c-cfdfc8bb2741.css' )
+
+    title Artsy
+
+    link( rel='icon', href= assetPath('images/favicon.ico') )
+    link( rel='stylesheet', href= assetPath('stylesheets/application.css') )
+  body
+    include header
+
+    .transient-error-page
+      h1.js-countdown-message
+        | Trouble loading page&hellip;
+
+      .countdown-stage.js-countdown-stage
+        h2 &hellip;trying again in&hellip;
+        .countdown: .countdown-timer.js-countdown-timer( data-count='0' )
+            //-
+
+      .countdown-actions
+        button.avant-garde-button-black.is-block.js-countdown-button( onclick='location.reload();' )
+          | Refresh Now
+
+    script( src= assetPath('javascripts/application.js') )
