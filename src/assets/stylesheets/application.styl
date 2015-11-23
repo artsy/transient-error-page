@@ -1,0 +1,46 @@
+@require '../../../node_modules/artsy-elan/components/lib'
+@require '../../../node_modules/artsy-elan/assets/stylesheets/components'
+
+countdown-timer-size = 117px
+
+::selection
+  background-color purple-color
+  color white
+::-moz-selection
+  background-color purple-color
+  color white
+
+#main-layout-header-home-logo
+  height main-header-height
+  padding ((main-header-height - default-icon-font-size) / 2)
+
+.transient-error-page
+  width 75%
+  margin main-header-height auto
+  padding 50px 25px
+  text-align center
+  > h1
+  > h2
+    block-margins(20px)
+  > h1
+    garamond-size('l-headline')
+  > h2
+    garamond-size('l-body')
+
+.countdown-timer
+  position relative
+  width countdown-timer-size
+  height countdown-timer-size
+  margin 50px auto
+  &:after
+    display block
+    position absolute
+    top 50%
+    left 50%
+    transform translate(-50%, -50%)
+    content attr(data-count)
+    garamond-size('l-headline')
+
+.countdown-actions
+  width (countdown-timer-size * 2)
+  margin 0 auto
