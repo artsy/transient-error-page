@@ -38,10 +38,7 @@ gulp.task('jade:production', () => {
   let manifest = JSON.parse(fs.readFileSync('build/rev-manifest.json', 'utf8'));
   return gulp.src('src/html/index.jade')
     .pipe(jade({
-      locals: Object.assign(
-        { assetPath: assetPath(manifest) },
-        locals()
-      )
+      locals: { assetPath: assetPath(manifest) }
     }))
     .pipe(gulp.dest('build'));
 });
@@ -135,7 +132,7 @@ gulp.task('rev', () => {
 gulp.task('rev:clean', gulp.series('rev', () => {
   let manifest, toClean;
   manifest = JSON.parse(fs.readFileSync('build/rev-manifest.json', 'utf8'));
-  toClean = Object.keys(manifest).map(function(path) { return 'build/' + path; });
+  toClean = Object.keys(manifest).map((path) => `build/${path}`);
   return del(toClean);
 }));
 
@@ -194,19 +191,15 @@ gulp.task('watch', gulp.series('set:watch', 'development:build', (done) => {
 
 // Deploy
 gulp.task('deploy', gulp.series('production:build', () => {
-  let project = process.env.PROJECT_NAME;
-
   let publisher = awspublish.create({
-    accessKeyId: process.env.AWS_KEY,
-    secretAccessKey: process.env.AWS_SECRET,
-    params: { Bucket: process.env.S3_BUCKET },
+    params: { Bucket: process.env.AWS_S3_BUCKET },
     region: process.env.AWS_REGION
   });
 
   return gulp.src('./build/**/*')
+    .pipe(awspublish.gzip())
     .pipe(publisher.publish())
     .pipe(publisher.sync())
-    .pipe(awspublish.gzip({ ext: '.gz' }))
     .pipe(publisher.cache())
     .pipe(awspublish.reporter());
 }));

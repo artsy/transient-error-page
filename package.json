@@ -1,8 +1,10 @@
 {
   "scripts": {
     "with-env": "env $(cat .env | xargs)",
-    "deploy": "npm run with-env gulp deploy",
-    "watch": "gulp watch"
+    "deploy-with-env": "npm run with-env gulp deploy",
+    "deploy": "gulp deploy",
+    "watch": "gulp watch",
+    "test": "mocha test"
   },
   "devDependencies": {
     "babel-core": "^6.2.1",
@@ -21,7 +23,10 @@
     "gulp-stylus": "^2.0.7",
     "gulp-uglify": "^1.4.1",
     "gulp-util": "^3.0.6",
+    "mocha": "^2.3.4",
     "nib": "^1.1.0",
+    "should": "^7.1.1",
+    "sinon": "^1.17.2",
     "vinyl-source-stream": "^1.1.0",
     "watchify": "^3.4.0"
   },
