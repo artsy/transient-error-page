@@ -1,7 +1,8 @@
 {
   "scripts": {
     "with-env": "env $(cat .env | xargs)",
-    "deploy": "npm run with-env gulp deploy",
+    "deploy-with-env": "npm run with-env gulp deploy",
+    "deploy": "gulp deploy",
     "watch": "gulp watch",
     "test": "mocha test"
   },
