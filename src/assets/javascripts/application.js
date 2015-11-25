@@ -1,22 +1,15 @@
 import ProgressBar from 'progressbar.js';
-import Cookies from 'cookies-js';
+import Countdown from './countdown';
 
-let attempts = parseInt(Cookies.get('attempts') || 0) + 1;
-let limit = 3;
-let interval = 1000;
-let length = Math.pow(3, attempts);
-let duration = interval * length;
-
-Cookies.set('attempts', attempts, { expires: 600 }); // Reset after 10 minutes
-
+let countdown = new Countdown;
 let stage = document.querySelectorAll('.js-countdown-stage')[0];
 
-if (limit >= attempts) { // Start the countdown
+if (countdown.shouldStart()) { // Start the countdown
 
   let el = document.querySelectorAll('.js-countdown-timer')[0];
 
   let circle = new ProgressBar.Circle(el, {
-    duration: duration,
+    duration: countdown.duration,
     color: '#000',
     trailColor: '#ccc',
     easing: 'linear',
@@ -24,18 +17,18 @@ if (limit >= attempts) { // Start the countdown
   });
 
   let tick = () => {
-    el.setAttribute('data-count', length);
-    if (length === 0) {
+    el.setAttribute('data-count', countdown.length);
+    if (countdown.isDone()) {
       clearInterval(ticker);
       return location.reload();
     }
-    length = length - 1;
+    countdown.tick();
   };
 
   circle.animate(1);
 
   tick();
-  let ticker = setInterval(tick, interval);
+  let ticker = setInterval(tick, countdown.interval);
 
 } else { // Give up
 
