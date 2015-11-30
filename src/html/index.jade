@@ -13,11 +13,12 @@ html
     include header
 
     .transient-error-page
-      h1.js-countdown-message
+      h1.error-page-headline.js-countdown-message
         | Trouble loading page&hellip;
 
       .countdown-stage.js-countdown-stage
-        h2 &hellip;trying again in&hellip;
+        h2.error-page-subheadline
+          | &hellip;trying again in&hellip;
         .countdown: .countdown-timer.js-countdown-timer( data-count='0' )
             //-
 

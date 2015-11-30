@@ -35,8 +35,13 @@ if (countdown.shouldStart()) { // Start the countdown
   let button = document.querySelectorAll('.js-countdown-button')[0];
   let message = document.querySelectorAll('.js-countdown-message')[0];
 
-  stage.parentNode.removeChild(stage);
-  message.textContent = 'Trouble loading page.';
+  stage.outerHTML = `
+    <h2 class='error-page-subheadline'>
+      We’re working on it, please try back later or contact
+      <a href='mailto:support@artsy.net'>support@artsy.net</a>
+    </h2>
+  `;
+  message.textContent = 'Sorry, we can’t process your request at this moment.';
   button.innerHTML = 'Try again';
 
 };
