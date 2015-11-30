@@ -19,13 +19,16 @@ countdown-timer-size = 117px
   margin main-header-height auto
   padding 50px 25px
   text-align center
-  > h1
-  > h2
-    block-margins(20px)
-  > h1
-    garamond-size('l-headline')
-  > h2
-    garamond-size('l-body')
+
+.error-page-headline
+.error-page-subheadline
+  block-margins(20px)
+  > a
+    fine-faux-underline()
+.error-page-headline
+  garamond-size('l-headline')
+.error-page-subheadline
+  garamond-size('l-body')
 
 .countdown-timer
   position relative
@@ -43,4 +46,4 @@ countdown-timer-size = 117px
 
 .countdown-actions
   width (countdown-timer-size * 2)
-  margin 0 auto
+  margin 50px auto
