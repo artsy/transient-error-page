@@ -15,7 +15,7 @@ To start up a development server, clone this repo and run:
 
 ``` sh
 npm install
-npm run watch
+npm run dev
 ```
 
 ### Deployment

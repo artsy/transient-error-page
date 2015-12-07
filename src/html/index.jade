@@ -1,6 +1,7 @@
 doctype html
 html
   head
+    base( target='_parent' )
     meta( charset='utf-8' )
     meta( http-equiv='X-UA-Compatible', content='IE=edge,chrome=1' )
     link( type='text/css', rel='stylesheet', href='//fast.fonts.net/cssapi/f7f47a40-b25b-44ee-9f9c-cfdfc8bb2741.css' )
@@ -23,7 +24,7 @@ html
             //-
 
       .countdown-actions
-        button.avant-garde-button-black.is-block.js-countdown-button( onclick='location.reload();' )
+        a.avant-garde-button-black.is-block.js-countdown-button( href='https://www.artsy.net' )
           | Refresh Now
 
     script( src= assetPath('javascripts/application.js') )

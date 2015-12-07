@@ -4,6 +4,7 @@
     "deploy-with-env": "npm run with-env gulp deploy",
     "deploy": "gulp deploy",
     "watch": "gulp watch",
+    "dev": "npm run watch",
     "test": "mocha test"
   },
   "devDependencies": {
