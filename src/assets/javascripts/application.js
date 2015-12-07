@@ -20,7 +20,7 @@ if (countdown.shouldStart()) { // Start the countdown
     el.setAttribute('data-count', countdown.length);
     if (countdown.isDone()) {
       clearInterval(ticker);
-      return location.reload();
+      return parent.location.reload();
     }
     countdown.tick();
   };
